@@ -159,7 +159,7 @@ const ParticleSystem: React.FC<ParticleSystemProps> = ({
           ctx.fillRect(-particle.size / 2, -particle.size / 4, particle.size, particle.size / 2);
           break;
           
-        case 'coin':
+        case 'coin': {
           // Draw coin with gradient
           const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, particle.size);
           gradient.addColorStop(0, particle.color);
@@ -175,7 +175,8 @@ const ParticleSystem: React.FC<ParticleSystemProps> = ({
           ctx.arc(-particle.size / 3, -particle.size / 3, particle.size / 3, 0, Math.PI * 2);
           ctx.fill();
           break;
-          
+        }
+
         case 'star':
           ctx.fillStyle = particle.color;
           ctx.beginPath();
@@ -205,7 +206,7 @@ const ParticleSystem: React.FC<ParticleSystemProps> = ({
           ctx.stroke();
           break;
           
-        case 'explosion':
+        case 'explosion': {
           const explosionGradient = ctx.createRadialGradient(0, 0, 0, 0, 0, particle.size);
           explosionGradient.addColorStop(0, particle.color);
           explosionGradient.addColorStop(0.5, particle.color + 'AA');
@@ -215,6 +216,7 @@ const ParticleSystem: React.FC<ParticleSystemProps> = ({
           ctx.arc(0, 0, particle.size, 0, Math.PI * 2);
           ctx.fill();
           break;
+        }
       }
       
       ctx.restore();

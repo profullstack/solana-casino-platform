@@ -170,13 +170,14 @@ export const useEnhancedGame = (gameType: string) => {
             won = outcome === prediction.choice;
             payout = won ? betAmount * 1.95 : 0;
             break;
-          case 'diceroll':
+          case 'diceroll': {
             outcome = Math.floor(Math.random() * 100) + 1;
             won = prediction.isOver ? outcome > prediction.target : outcome < prediction.target;
             const chance = prediction.isOver ? (100 - prediction.target) : prediction.target;
             const multiplier = chance > 0 ? (98 / chance) : 0;
             payout = won ? betAmount * Math.min(multiplier, 9.9) : 0;
             break;
+          }
           case 'slots':
             outcome = [
               Math.floor(Math.random() * 7),
